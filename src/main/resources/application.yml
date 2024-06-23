@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: geracao-faturas-cartao-credito-job
+
+  datasource:
+    sbd:
+      username: username
+      password: password
+      jdbc-url: jdbc:mysql://localhost:3306/spring_batch?useSSL=false
+    app:
+      username: username
+      password: password
+      jdbc-url: jdbc:mysql://localhost:3306/migracao_dados?useSSL=false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  batch:
+    jdbc:
+      initialize-schema: always
