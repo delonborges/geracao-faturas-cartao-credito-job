@@ -1,11 +1,13 @@
 package com.delon.geracaofaturascartaocreditojob.step;
 
 import com.delon.geracaofaturascartaocreditojob.domain.FaturaCartaoCredito;
+import com.delon.geracaofaturascartaocreditojob.domain.Transacao;
+import com.delon.geracaofaturascartaocreditojob.reader.FaturaCartaoCreditoReader;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +25,11 @@ public class GeracaoFaturaCartaoCreditoStepConfig {
     }
 
     @Bean
-    public Step geracaoFaturaCartaoCreditoStep(ItemReader<FaturaCartaoCredito> faturaCartaoCreditoItemReader,
+    public Step geracaoFaturaCartaoCreditoStep(ItemStreamReader<Transacao> transacaoItemStreamReader,
                                                ItemProcessor<FaturaCartaoCredito, FaturaCartaoCredito> faturaCartaoCreditoItemProcessor,
                                                ItemWriter<FaturaCartaoCredito> faturaCartaoCreditoItemWriter) {
         return new StepBuilder("geracaoFaturaCartaoCreditoStep", jobRepository).<FaturaCartaoCredito, FaturaCartaoCredito>chunk(1, transactionManager)
-                                                                               .reader(faturaCartaoCreditoItemReader)
+                                                                               .reader(new FaturaCartaoCreditoReader(transacaoItemStreamReader))
                                                                                .processor(faturaCartaoCreditoItemProcessor)
                                                                                .writer(faturaCartaoCreditoItemWriter)
                                                                                .build();

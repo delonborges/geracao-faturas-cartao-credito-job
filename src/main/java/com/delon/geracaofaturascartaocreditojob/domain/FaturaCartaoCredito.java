@@ -1,7 +1,18 @@
 package com.delon.geracaofaturascartaocreditojob.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-public record FaturaCartaoCredito(Cliente cliente,
-                                  CartaoCredito cartaoCredito,
-                                  List<Transacao> transacoes) {}
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class FaturaCartaoCredito {
+    Cliente cliente;
+    CartaoCredito cartaoCredito;
+    List<Transacao> transacoes;
+}
