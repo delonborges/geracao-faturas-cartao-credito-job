@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GeracaoFaturasCartaoCreditoJobApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GeracaoFaturasCartaoCreditoJobApplication.class, args);
+        var context = SpringApplication.run(GeracaoFaturasCartaoCreditoJobApplication.class, args);
+        context.close();
     }
 
 }

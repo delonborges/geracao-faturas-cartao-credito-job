@@ -9,6 +9,7 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemStreamReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.file.FlatFileFooterCallback;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -26,12 +27,14 @@ public class GeracaoFaturaCartaoCreditoStepConfig {
 
     @Bean
     public Step geracaoFaturaCartaoCreditoStep(ItemStreamReader<Transacao> transacaoItemStreamReader,
-                                               ItemProcessor<FaturaCartaoCredito, FaturaCartaoCredito> faturaCartaoCreditoItemProcessor,
-                                               ItemWriter<FaturaCartaoCredito> faturaCartaoCreditoItemWriter) {
+                                               ItemProcessor<FaturaCartaoCredito, FaturaCartaoCredito> carregamentoDadosClienteProcessor,
+                                               ItemWriter<FaturaCartaoCredito> faturaCartaoCreditoItemWriter,
+                                               FlatFileFooterCallback footerCallback) {
         return new StepBuilder("geracaoFaturaCartaoCreditoStep", jobRepository).<FaturaCartaoCredito, FaturaCartaoCredito>chunk(1, transactionManager)
                                                                                .reader(new FaturaCartaoCreditoReader(transacaoItemStreamReader))
-                                                                               .processor(faturaCartaoCreditoItemProcessor)
+                                                                               .processor(carregamentoDadosClienteProcessor)
                                                                                .writer(faturaCartaoCreditoItemWriter)
+                                                                               .listener(footerCallback)
                                                                                .build();
     }
 }

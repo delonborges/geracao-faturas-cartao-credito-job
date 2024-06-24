@@ -29,7 +29,7 @@ public class FaturaCartaoCreditoItemReaderConfig {
             var cliente = Cliente.builder().id(rs.getInt("cliente")).build();
             var cartaoCredito = CartaoCredito.builder().numeroCartaoCredito(rs.getInt("numero_cartao_credito")).cliente(cliente).build();
             return Transacao.builder()
-                            .id(rs.getInt("transacao"))
+                            .id(rs.getInt("id"))
                             .cartaoCredito(cartaoCredito)
                             .data(rs.getDate("data"))
                             .valor(rs.getDouble("valor"))
