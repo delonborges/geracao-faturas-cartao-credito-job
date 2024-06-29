@@ -10,7 +10,7 @@
 </p>
 
 <p align=center>
-  <a href="https://www.udemy.com/certificate/404/"> <img alt="Udemy" src=https://img.shields.io/badge/Udemy-EC5252?style=flat-square&logo=Udemy&logoColor=white&labelColor=purple&color=purple&https://www.udemy.com/certificate/404/></a>
+  <a href="https://www.udemy.com/certificate/UC-6bb2ce42-571a-4186-92e1-dcf686207aed/"> <img alt="Udemy" src=https://img.shields.io/badge/Udemy-EC5252?style=flat-square&logo=Udemy&logoColor=white&labelColor=purple&color=purple&https://www.udemy.com/certificate/UC-6bb2ce42-571a-4186-92e1-dcf686207aed/></a>
 </p>
 
 <br>
@@ -19,7 +19,6 @@
 
 - [Java](https://www.oracle.com/java/technologies/downloads/)
 - [Gradle](https://docs.gradle.org/current/userguide/userguide.html)
-- [JUnit 5](https://junit.org/junit5/docs/current/user-guide/)
 - [MySQL](https://dev.mysql.com/downloads/mysql/)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Batch](https://spring.io/projects/spring-batch)
